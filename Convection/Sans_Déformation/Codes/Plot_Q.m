@@ -8,7 +8,10 @@ function Plot_Q(M, N, L, D, a, P0, P1)
         Q(i, 1) = (P0 - P1) / ((12 * a * L) / D^3);
         X(i, 1) = (i - 1) * (L / (M - 1));
     end
-    
+    mean_QQ = mean(QQ);
+    mean_Q = mean(Q);
+    Inc = (mean_Q-mean_QQ)/mean_QQ;
+    fprintf('Débit Numérique = %.4f, Débit Théorique = %.4f,Incertitude = %.4f\n', mean_QQ, mean_Q, Inc);
     plot(X, QQ, 'DisplayName', 'Numérique');
     hold on;
     plot(X, Q, 'DisplayName', 'Théorique');
